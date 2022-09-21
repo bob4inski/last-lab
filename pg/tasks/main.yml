@@ -25,10 +25,9 @@
 
 
 
-# - name: "Initialize PostgreSQL"
-#   ansible.builtin.command: /usr/pgsql-14/bin/postgresql-14-setup initdb
-#   notify:
-#     - restart p
+- name: "Initialize PostgreSQL"
+  ansible.builtin.command: /usr/pgsql-14/bin/postgresql-14-setup initdb
+
 
 
 - name: "script"
@@ -54,14 +53,14 @@
 #   become_user: postgres
 
 
-- name: create postgresql user
-  postgresql_user:
-    user: "alice"
-    password: "alice"
-    role_attr_flags: "CREATEDB,NOSUPERUSER"
-  become: true
-  become_user: postgres
-  tags: db
+# - name: create postgresql user
+#   postgresql_user:
+#     user: "alice"
+#     password: "alice"
+#     role_attr_flags: "CREATEDB,NOSUPERUSER"
+#   become: true
+#   become_user: postgres
+#   tags: db
 
 - name: 
   postgresql_owner:
